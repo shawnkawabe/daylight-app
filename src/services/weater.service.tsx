@@ -7,7 +7,7 @@ const db=DatabaseConnection.getConnection()
 export default class WeatherService {
 
 
-     static addData(param: Weather) {
+    static addData(param: Weather) {
         return new Promise((resolve, reject) =>db.transaction(
             tx => {
                 tx.executeSql(`insert into ${table} (nome) 
@@ -23,7 +23,7 @@ export default class WeatherService {
             }));
     }
 
-     static deleteWeather(nome: string) {
+    static deleteWeather(nome: string) {
         db.transaction(
             tx => {
                 tx.executeSql(`delete from weather where nome = ?;`, [nome], (_, { rows }) => {
@@ -60,7 +60,7 @@ export default class WeatherService {
         }));
     }
 */
-      static findAll() {
+    static findAll() {
         return new Promise((resolve, reject) => db.transaction(tx => {
             tx.executeSql(`select * from weather`, [], (_, { rows }) => {
                 resolve(rows)
